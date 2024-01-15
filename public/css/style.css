@@ -1,0 +1,117 @@
+body {
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+}
+.logo {
+  height: 80px;
+  display: block;
+  margin: auto;
+}
+nav {
+  background-color: white;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.container {
+  background-color: #90d3e4;
+  margin: auto;
+  width: 50vw;
+  height: 70vh;
+  border-radius: 5px;
+  padding: 20px;
+  overflow-y: auto;
+}
+.message {
+  background-color: azure;
+  margin: 15px;
+  width: auto;
+  padding: 7px;
+  border-radius: 5px;
+}
+.left {
+  float: left;
+  clear: both;
+}
+.right {
+  float: right;
+  clear: both;
+}
+.send {
+  text-align: center;
+}
+
+.inputFLD {
+  width: 40vw;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #45a049;
+}
+
+.alert {
+  float: left;
+  clear: both;
+
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: white;
+  font-size: 1em;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  padding: 0.5em;
+  width: calc(100%);
+  text-align: center;
+}
+.true {
+  background-color: #2ecc71;
+}
+.false {
+  background-color: #e67e22;
+}
+a {
+  text-decoration: none;
+}
+.button {
+  font-family: system-ui, sans-serif;
+  font-size: 3.5rem;
+  cursor: pointer;
+  padding: 0.1em 0.6em;
+  font-weight: bold;
+  border: none;
+  margin: 50px;
+}
+.button:hover {
+  --_p: 100%;
+  transition: background-position 0.4s, background-size 0s;
+}
+.button:active {
+  box-shadow: 0 0 9e9Q inset #0009;
+  background-color: var(--c);
+  color: #fff;
+}
+.button {
+  --c: #229091; /* the color*/
+
+  box-shadow: 0 0 0 0.1em inset var(--c);
+  --_g: linear-gradient(var(--c) 0 0) no-repeat;
+  background: var(--_g) calc(var(--_p, 0%) - 100%) 0%,
+    var(--_g) calc(200% - var(--_p, 0%)) 0%,
+    var(--_g) calc(var(--_p, 0%) - 100%) 100%,
+    var(--_g) calc(200% - var(--_p, 0%)) 100%;
+  background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
+  outline-offset: 0.1em;
+  transition: background-size 0.4s, background-position 0s 0.4s;
+}
