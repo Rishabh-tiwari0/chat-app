@@ -1,7 +1,8 @@
 # My Awesome Chat App
 
 
-##special proud of the fact that i got rid of the bug that prevented app from working properly in phone and kept socket from providing reliable connection
+I consider it noteworthy that I successfully addressed the software bug affecting the proper functionality of the application on mobile devices and resolved the issue with the socket, ensuring a reliable and stable connection.
+
 
 ## Sign Up
 
