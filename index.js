@@ -1,42 +1,42 @@
-var express = require("express");
-var app = express();
-var server = require("http").createServer(app);
-var io = require("socket.io")(server);
-app.use(express.static(__dirname + "/node_modules"));
+const express = require("express");
+const app = express();
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const dotenv = require("dotenv");
 
-require("dotenv").config();
+dotenv.config();
 
 const cors = require("cors");
-const { name } = require("ejs");
 const PORT = process.env.PORT || 3000;
 
-// setting up middleware
-
+// Setting up middleware
 app.use(express.static("public"));
 app.use(cors());
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  session({ secret: "your-secret-key", resave: true, saveUninitialized: true })
+);
 
-// creatiing a ssocket user collection
-
+// Creating a socket user collection
 const users = {};
-// creating a database connection
+
+// Creating a database connection
 mongoose
   .connect(process.env.CONNECTION_URL)
-  .then(console.log("database connected successfully"));
-// creating userSchema
+  .then(console.log("Database connected successfully"));
+
+// Creating userSchema
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
 });
-// creating model
+
+// Creating model
 const User = mongoose.model("User", userSchema);
-app.use(
-  session({ secret: "your-secret-key", resave: true, saveUninitialized: true })
-);
 
 // Custom middleware to check if the user is authenticated
 const isAuthenticated = (req, res, next) => {
@@ -47,7 +47,7 @@ const isAuthenticated = (req, res, next) => {
   }
 };
 
-// creating socket connection
+// Socket connection
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -72,7 +72,6 @@ app.post("/login", async (req, res) => {
   const user = await User.findOne({ username, password });
   if (user) {
     req.session.user = username;
-
     res.redirect("/chat");
   } else {
     res.send("Invalid login credentials.");
@@ -84,28 +83,30 @@ app.get("/chat", isAuthenticated, (req, res) => {
   res.render("chat.ejs", { name: name });
 });
 
-// socket connection
-
+// Socket connection
 io.on("connection", (socket) => {
-  // when new user joins
+  // When a new user joins
   socket.on("new-user-joined", (name) => {
     users[socket.id] = name;
     socket.broadcast.emit("user-joined", name);
   });
-  // when user sent a mesage
+
+  // When a user sends a message
   socket.on("send-msg", (message) => {
     socket.broadcast.emit("receive-msg", {
       message: message,
       name: users[socket.id],
     });
   });
-  // on disconnect
-  socket.on("disconnect", (message) => {
+
+  // On disconnect
+  socket.on("disconnect", () => {
     socket.broadcast.emit("left", users[socket.id]);
     delete users[socket.id];
   });
 });
 
+// Server listening
 server.listen(PORT, () => {
-  console.log("listening on 3000");
+  console.log(`Listening on port ${PORT}`);
 });
