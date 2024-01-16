@@ -21,7 +21,7 @@ If you already have an account, log in with your credentials:
 
 ## Chat Room
 
-Upon successful login, access the chat room. Enter your username and join the chat:
+Upon successful login, access the chat room. join the chat:
 
 [Chat Room](/chat)
 
