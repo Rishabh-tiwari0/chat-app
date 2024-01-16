@@ -3,7 +3,7 @@ const msgINP = document.getElementById("messageTXT");
 const BTN = document.getElementById("btn");
 const messageContainer = document.querySelector(".container");
 var audio = new Audio("/ting.mp3");
-const name = prompt("enter your name to join");
+const name = document.getElementById("name").innerText;
 
 const appendMSG = (message, position) => {
   const msgElement = document.createElement("div");

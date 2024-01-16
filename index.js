@@ -10,6 +10,7 @@ const session = require("express-session");
 require("dotenv").config();
 
 const cors = require("cors");
+const { name } = require("ejs");
 const PORT = process.env.PORT || 3000;
 
 // setting up middleware
@@ -77,7 +78,8 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/chat", isAuthenticated, (req, res) => {
-  res.render("chat.ejs");
+  const name = req.session.user;
+  res.render("chat.ejs", { name: name });
 });
 
 // socket connection
