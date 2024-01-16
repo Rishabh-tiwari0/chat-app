@@ -1,7 +1,7 @@
 # My Awesome Chat App
 
 
-##special proud of the fact that i got rid of the bug that prevented app from working prop
+##special proud of the fact that i got rid of the bug that prevented app from working properly in phone and kept socket from providing reliable connection
 
 ## Sign Up
 
