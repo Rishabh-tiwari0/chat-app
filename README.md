@@ -5,7 +5,7 @@
 To use this app, sign up with the required information:
 
 - Username
-- Email
+
 - Password
 
 [Sign Up Page](/signup)
