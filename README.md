@@ -1,5 +1,8 @@
 # My Awesome Chat App
 
+
+##special proud of the fact that i got rid of the bug that prevented app from working prop
+
 ## Sign Up
 
 To use this app, sign up with the required information:
