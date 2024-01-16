@@ -1,13 +1,18 @@
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+app.use(express.static(__dirname + "/node_modules"));
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
-const dotenv = require("dotenv");
 
-dotenv.config();
+require("dotenv").config();
 
 const cors = require("cors");
 const PORT = process.env.PORT || 3000;
@@ -17,17 +22,14 @@ app.use(express.static("public"));
 app.use(cors());
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  session({ secret: "your-secret-key", resave: true, saveUninitialized: true })
-);
 
 // Creating a socket user collection
 const users = {};
 
 // Creating a database connection
-mongoose
-  .connect(process.env.CONNECTION_URL)
-  .then(console.log("Database connected successfully"));
+mongoose.connect(process.env.CONNECTION_URL).then(() => {
+  console.log("Database connected successfully");
+});
 
 // Creating userSchema
 const userSchema = new mongoose.Schema({
@@ -38,6 +40,10 @@ const userSchema = new mongoose.Schema({
 // Creating model
 const User = mongoose.model("User", userSchema);
 
+app.use(
+  session({ secret: "your-secret-key", resave: true, saveUninitialized: true })
+);
+
 // Custom middleware to check if the user is authenticated
 const isAuthenticated = (req, res, next) => {
   if (req.session && req.session.user) {
@@ -47,7 +53,7 @@ const isAuthenticated = (req, res, next) => {
   }
 };
 
-// Socket connection
+// Creating socket connection
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -103,6 +109,11 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     socket.broadcast.emit("left", users[socket.id]);
     delete users[socket.id];
+  });
+
+  // Handle errors
+  socket.on("error", (err) => {
+    console.error(`Socket error: ${err}`);
   });
 });
 
