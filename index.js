@@ -20,6 +20,8 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// creatiing a ssocket user collection
+
 const users = {};
 // creating a database connection
 mongoose
