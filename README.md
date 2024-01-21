@@ -1,5 +1,9 @@
 # My Awesome Chat App
 
+
+I consider it noteworthy that I successfully addressed the software bug affecting the proper functionality of the application on mobile devices and resolved the issue with the socket, ensuring a reliable and stable connection.
+
+
 ## Sign Up
 
 To use this app, sign up with the required information:
