@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game window</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- if not logged in -->
+    <div id="myModal">
+      <p>You are not logged in please login to play game!!</p>
+      <button onclick="redirectToPage()" class="btn">OK</button>
+    </div>
+    <!-- if logged in -->
+    <div class="gameContainer">
+      <header class="gameNameCont">
+        <h1 class="gameName">Tic - Tac - Toe</h1>
+      </header>
+      <div class="PlayerNameCont">
+        <p id="userNameContainer">you:<span id="myName"><%= name %></span></p>
+        <p id="EnemyNameContainer">Enemy: <span id="opponentName"></span></p>
+      </div>
+      <div class="detailCont">
+        <p class="playerSign">
+          You are playing as: <span id="playingAs"></span>
+        </p>
+        <div id="playerName"></div>
+        <p>It is turn of : <span id="turn">X</span></p>
+      </div>
+      <button id="find">Search for a player</button>
+      <img src="/loading.gif" alt="loading" id="loading" />
+
+      <h1  id="winnerName"></h1>
+
+      
+      <div class="center">
+        <div class="gridContainer">
+          
+          <% for (let i = 1; i < 10; i++) { %>
+            <button id="button<%= i %>" class="grid-item"></button>
+          <% } %>
+        </div>
+      </div>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+      <script src="/js/tictactoe.js"></script>
+  </body>
+</html>

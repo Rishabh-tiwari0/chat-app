@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Rocher";
+  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
 body {
   background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 }
@@ -114,4 +118,94 @@ a {
   background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
   outline-offset: 0.1em;
   transition: background-size 0.4s, background-position 0s 0.4s;
+}
+.gameContainer {
+  font-family: "Rocher";
+  font-size: 50px;
+}
+.gameNameCont {
+  display: flex;
+  justify-content: center;
+}
+.gameName {
+  border: 2px solid green;
+}
+.PlayerNameCont {
+  font-size: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+.playerSign {
+  font-size: 25px;
+  display: block;
+  margin: auto;
+}
+#turn {
+  font-size: 25px;
+}
+#find {
+  background-color: #04aa6d; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  display: block;
+  margin: auto;
+}
+#find:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#loading {
+  height: 30px;
+  display: block;
+  margin: auto;
+  padding-top: 15px;
+}
+.detailCont {
+  display: flex;
+}
+.playerSign {
+  margin-left: 0;
+}
+.playerName {
+  margin-left: 30vw;
+}
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 10px;
+}
+.grid-item {
+  width: 80px;
+  height: 80px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+#myModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 5px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+.grid-item {
+  color: black;
 }
