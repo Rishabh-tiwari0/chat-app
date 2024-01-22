@@ -1,4 +1,4 @@
-# My Awesome Chat App
+# blackCHAT
 
 I'm excited to share the latest updates to our chat app! Notably, we've successfully addressed a software bug affecting mobile functionality and enhanced socket connections for a more reliable experience.
 
